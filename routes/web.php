@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/pay', function () {
-    return view('pay');
-});
+Route::get('/pay', App\Http\Controllers\InitiateRemitaPaymentController::class);
+
+Route::post('/verify-payment', App\Http\Controllers\VerifyPaymentController::class)
+    ->name('verify-payment');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

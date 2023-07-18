@@ -4,6 +4,7 @@
         <title>Remita Checkout Sample</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
         <style type="text/css">
@@ -40,35 +41,43 @@
            </form>
         </div>
         <script type="text/javascript" src="https://remitademo.net/payment/v1/remita-pay-inline.bundle.js"></script>
-         <script>         
+         <script>
       function makePayment() {
-          var form = document.querySelector("#payment-form");
-          var paymentEngine = RmPaymentEngine.init({
+          const form = document.querySelector("#payment-form");
+          const paymentEngine = RmPaymentEngine.init({
               key: 'QzAwMDAyNzEyNTl8MTEwNjE4NjF8OWZjOWYwNmMyZDk3MDRhYWM3YThiOThlNTNjZTE3ZjYxOTY5NDdmZWE1YzU3NDc0ZjE2ZDZjNTg1YWYxNWY3NWM4ZjMzNzZhNjNhZWZlOWQwNmJhNTFkMjIxYTRiMjYzZDkzNGQ3NTUxNDIxYWNlOGY4ZWEyODY3ZjlhNGUwYTY=',
-              transactionId: Math.floor(Math.random()*1101233), // Replace with a reference you generated or remove the entire field for us to auto-generate a reference for you. Note that you will be able to check the status of this transaction using this transaction Id
+              transactionId: '{{ $transactionId }}',
               customerId: form.querySelector('input[name="email"]').value,
               firstName: form.querySelector('input[name="firstName"]').value,
               lastName: form.querySelector('input[name="lastName"]').value,
               email: form.querySelector('input[name="email"]').value,
               amount: form.querySelector('input[name="amount"]').value,
-              narration: form.querySelector('input[name="narration"]').value,
+              narration: 'Giving via Remita',
               onSuccess: function (response) {
-                  console.log('callback Successful Response', response);
+                const payload = JSON.stringify(response)
+                const result = JSON.parse(payload)
+                console.log(result.transactionId)
+                axios.post('{{ route('verify-payment') }}', {
+                    transactionId: result.transactionId
+                })
+                  // axios.post('{{ route('verify-payment') }}', {response.transactionId})
+                  // console.log('callback Successful Response', response);
+                  // console.log(JSON.stringify(response));
               },
               onError: function (response) {
                   console.log('callback Error Response', response);
-                  
+
               },
               onClose: function () {
                   console.log("closed");
               }
           });
-           paymentEngine.showPaymentWidget();
+          paymentEngine.showPaymentWidget();
       }
-     
-      window.onload = function () {
-          setDemoData();
-      };
+
+      // window.onload = function () {
+      //     setDemoData();
+      // };
   </script>
      </body>
   </html>
