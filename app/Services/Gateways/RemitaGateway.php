@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace App\Services\Gateways;
 
 use App\Models\Payment;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Client\RequestException;
+use Symfony\Component\HttpFoundation\Response as HttpResponse;
 
 class RemitaGateway
 {
@@ -43,7 +45,7 @@ class RemitaGateway
             'payment_status' => $payload->responseData[0]->paymentState,
         ]);
 
-
+        return new JsonResponse(['status' => 'verified'], HttpResponse::HTTP_OK);
 
 
     }

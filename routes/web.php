@@ -18,14 +18,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/pay', App\Http\Controllers\InitiateRemitaPaymentController::class);
+Route::view('/pay', 'pay');
 
 Route::post('/verify-payment', App\Http\Controllers\VerifyPaymentController::class)
     ->name('verify-payment');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/create-transaction', App\Http\Controllers\InitiateRemitaPaymentController::class)
+    ->name('create-transaction');
+
+Route::get('/dashboard',  App\Http\Controllers\RemitaPaymentsController::class)
+    ->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
