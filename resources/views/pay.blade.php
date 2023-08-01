@@ -9,44 +9,40 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"> </script>
-        
+
      </head>
      <body>
      	@include("header")
-     	
+
      <main>
-     	
-
-        <div class="border-2 grid grid-cols-1 min-h-screen">
-
-        	<div class="max-w-5xl w-1/3 mx-auto p-5 align-items-center">
-     		<h5 class="font-weight-bold text-black">Give through 
-     		<img src="https://www.ikoyibaptistchurch.org/wp-content/uploads/2023/07/Remita-Logo.png" width="100"> </h5>    </div>
-
-          <div class="max-w-5xl w-1/3 mx-auto p-8">
-            <form id="payment-form">
-              <div class="grid grid-cols-1 space-y-5">
-                <div>
-                  <input type="text" class="w-full py-3 rounded border border-gray-300 outline-none ring ring-blue-100 focus:border focus:ring-blue-400" placeholder="First Name" name="firstName">
-                </div>
-                <div>
-                  <input type="text" class="w-full py-3 rounded border border-gray-300 outline-none ring ring-blue-100 focus:border focus:ring-blue-400" placeholder="Last Name" name="lastName">
-                </div>
-                <div>
-                  <input type="text" class="w-full py-3 rounded border border-gray-300 outline-none ring ring-blue-100 focus:border focus:ring-blue-400" placeholder="Email" name="email">
-                </div>
-                <div>
-                  <input type="text" class="w-full py-3 rounded border border-gray-300 outline-none ring ring-blue-100 focus:border focus:ring-blue-400" placeholder="Narration" name="narration">
-                </div>
-                <div>
-                  <input type="text" class="w-full py-3 rounded border border-gray-300 outline-none ring ring-blue-100 focus:border focus:ring-blue-400" placeholder="Amount" name="amount">
-                </div>
-                <button type="button" onclick="makePayment()" class="bg-teal-500 text-white py-4 rounded">Pay</button>
-
-
+        <div class="max-w-5xl w-full lg:w-1/3 mx-auto p-8">
+            <h5 class="font-bold text-2xl flex items-center space-x-2">
+               <p class="mt-4 uppercase">Give through</p>
+              <img src="https://www.ikoyibaptistchurch.org/wp-content/uploads/2023/07/Remita-Logo.png" width="100">
+           </h5>
+          <form id="payment-form">
+            <div class="grid grid-cols-1 space-y-5">
+              <div>
+                <input type="text" class="w-full py-3 rounded border border-gray-300 outline-none ring ring-blue-100 focus:border focus:ring-blue-400" placeholder="First Name" name="firstName">
               </div>
-            </form>
-          </div>
+              <div>
+                <input type="text" class="w-full py-3 rounded border border-gray-300 outline-none ring ring-blue-100 focus:border focus:ring-blue-400" placeholder="Last Name" name="lastName">
+              </div>
+              <div>
+                <input type="text" class="w-full py-3 rounded border border-gray-300 outline-none ring ring-blue-100 focus:border focus:ring-blue-400" placeholder="Email" name="email">
+              </div>
+              <div>
+                <input type="text" class="w-full py-3 rounded border border-gray-300 outline-none ring ring-blue-100 focus:border focus:ring-blue-400" placeholder="Narration" name="narration">
+              </div>
+              <div>
+                <input type="text" class="w-full py-3 rounded border border-gray-300 outline-none ring ring-blue-100 focus:border focus:ring-blue-400" placeholder="Amount" name="amount">
+              </div>
+              <button type="button" onclick="makePayment()" class="bg-teal-500 text-white py-4 rounded">Pay</button>
+
+
+            </div>
+          </form>
+        </div>
         </div>
       <script type="text/javascript" src="https://remitademo.net/payment/v1/remita-pay-inline.bundle.js"></script>
       <script>
