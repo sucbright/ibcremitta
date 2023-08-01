@@ -15,10 +15,10 @@ use App\Http\Controllers\ProfileController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pay');
 });
 
-Route::view('/pay', 'pay');
+// Route::view('/pay', 'pay');
 
 Route::post('/verify-payment', App\Http\Controllers\VerifyPaymentController::class)
     ->name('verify-payment');
