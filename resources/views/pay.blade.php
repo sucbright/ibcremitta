@@ -1,13 +1,28 @@
 <!DOCTYPE html>
   <html lang="en">
      <head>
-        <title>Remita Checkout Sample</title>
+        <title>Remita Checkout</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"> </script>
+        
      </head>
      <body>
+     	@include("header")
+     	
+     <main>
+     	
+
         <div class="border-2 grid grid-cols-1 min-h-screen">
+
+        	<div class="max-w-5xl w-1/3 mx-auto p-5 align-items-center">
+     		<h5 class="font-weight-bold text-black">Give through 
+     		<img src="https://www.ikoyibaptistchurch.org/wp-content/uploads/2023/07/Remita-Logo.png" width="100"> </h5>    </div>
+
           <div class="max-w-5xl w-1/3 mx-auto p-8">
             <form id="payment-form">
               <div class="grid grid-cols-1 space-y-5">
@@ -71,5 +86,7 @@
       //     setDemoData();
       // };
   </script>
+  </main>
+  	@include('footer')
      </body>
   </html>
